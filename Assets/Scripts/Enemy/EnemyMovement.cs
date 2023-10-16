@@ -2,9 +2,11 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
+	[SerializeField] 
+	private float _isRadiusAttack = 15f;
+	
 	private EnemyStats _enemy;
 	private Transform _player;
-	private bool _isRadiusAttack;
 
 	private void Start()
 	{
@@ -14,8 +16,10 @@ public class EnemyMovement : MonoBehaviour
 
 	private void Update()
 	{
-		
-		transform.position = Vector2.MoveTowards(transform.position, _player.transform.position,
-			_enemy.CurrentMoveSpeed * Time.deltaTime);
+		if (Vector2.Distance(_player.transform.position, transform.position) <= _isRadiusAttack)
+		{
+			transform.position = Vector2.MoveTowards(transform.position, _player.transform.position,
+				_enemy.CurrentMoveSpeed * Time.deltaTime);
+		}
 	}
 }

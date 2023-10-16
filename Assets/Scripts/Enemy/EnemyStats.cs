@@ -1,29 +1,37 @@
 using UnityEngine;
+using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
 public class EnemyStats : MonoBehaviour
 {
-	public EnemyScriptableObject EnemyData;
-
+	[SerializeField]
+	private EnemyScriptableObject _enemyData;
+	[SerializeField]
+	private Image _healthBar;
+	
 	[HideInInspector]
 	public float CurrentMoveSpeed;
 	[HideInInspector]
 	public float CurrentHealth;
 	[HideInInspector]
 	public float CurrentDamage;
-
-	public float DeSpawnDistance = 20f;
+	[HideInInspector]
+	public int CurrentExperienceGranted;
+	
+	private const float DeSpawnDistance = 20f;
 	private Transform _player;
 
 	private void Awake()
 	{
-		CurrentMoveSpeed = EnemyData.MoveSpeed;
-		CurrentHealth = EnemyData.MaxHealth;
-		CurrentDamage = EnemyData.Damage;
+		CurrentMoveSpeed = _enemyData.MoveSpeed;
+		CurrentHealth = _enemyData.MaxHealth;
+		CurrentDamage = _enemyData.Damage;
+		CurrentExperienceGranted = _enemyData.ExperienceGranted;
 	}
 
 	private void Start()
 	{
+		UpdateHealthBar();
 		_player = FindObjectOfType<PlayerStats>().transform;
 	}
 
@@ -33,6 +41,8 @@ public class EnemyStats : MonoBehaviour
 		{
 			ReturnEnemy();
 		}
+
+		UpdateHealthBar();
 	}
 
 	private void OnDestroy()
@@ -52,6 +62,8 @@ public class EnemyStats : MonoBehaviour
 
 	private void Kill()
 	{
+		var playerStats = FindObjectOfType<PlayerStats>();
+		playerStats.IncreaseExperience(CurrentExperienceGranted);
 		Destroy(gameObject);
 	}
 
@@ -61,7 +73,8 @@ public class EnemyStats : MonoBehaviour
 
 		var player = other.gameObject.GetComponent<PlayerStats>();
 		player.TakeDamage(CurrentDamage);
-		AudioManager.Instance.EventInstances[(int)AudioNameEnum.DamageFlyBat].start();
+		
+		AudioManager.Instance.EventInstances[(int)AudioNameEnum.DamageEnemy].start();
 	}
 
 	private void ReturnEnemy()
@@ -69,5 +82,10 @@ public class EnemyStats : MonoBehaviour
 		var enemySpawner = FindObjectOfType<EnemySpawner>();
 		transform.position = _player.position + enemySpawner
 			.RelativeSpawnPoints[Random.Range(0, enemySpawner.RelativeSpawnPoints.Count)].position;
+	}
+	
+	private void UpdateHealthBar()
+	{
+		_healthBar.fillAmount = CurrentHealth / _enemyData.MaxHealth;
 	}
 }

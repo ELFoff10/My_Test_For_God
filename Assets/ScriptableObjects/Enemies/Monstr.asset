@@ -13,5 +13,6 @@ MonoBehaviour:
   m_Name: Monstr
   m_EditorClassIdentifier: 
   _moveSpeed: 2
-  _maxHealth: 5
-  _damage: 10
+  _maxHealth: 100
+  _damage: 5
+  _experienceGranted: 200

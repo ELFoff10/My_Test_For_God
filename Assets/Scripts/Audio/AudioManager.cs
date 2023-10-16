@@ -16,12 +16,10 @@ public class AudioManager : MonoSingleton<AudioManager>
 		EventInstances = new List<EventInstance>();
 		CreateInstance(_fmodEvents.ClickButton);
 		CreateInstance(_fmodEvents.MenuBackgroundMusic);
-		CreateInstance(_fmodEvents.GameBackgroundMusicLevel1);
+		CreateInstance(_fmodEvents.GameBackgroundMusic);
 		CreateInstance(_fmodEvents.PauseBackgroundMusic);	
-		CreateInstance(_fmodEvents.PickUpGem);
-		CreateInstance(_fmodEvents.PickUpBottle);
-		CreateInstance(_fmodEvents.DamageFlyBat);
-		CreateInstance(_fmodEvents.GameBackgroundMusicLevel2);
+		CreateInstance(_fmodEvents.PickUpArmor);
+		CreateInstance(_fmodEvents.EnemyDamage);
 		CreateInstance(_fmodEvents.Victory);
 		
 	}

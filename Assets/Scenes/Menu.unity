@@ -1894,20 +1894,13 @@ MonoBehaviour:
       Data3: -1827902283
       Data4: 1585662167
     Path: event:/UI/MenuBackgroundMusic
-  <GameBackgroundMusicLevel1>k__BackingField:
+  <GameBackgroundMusic>k__BackingField:
     Guid:
       Data1: -204103827
       Data2: 1325839144
       Data3: 746930578
       Data4: -746135149
     Path: event:/BackgroundMusic/GameBackgroundMusicLevel1
-  <GameBackgroundMusicLevel2>k__BackingField:
-    Guid:
-      Data1: 208542210
-      Data2: 1152125093
-      Data3: -1336067960
-      Data4: -2001355463
-    Path: event:/BackgroundMusic/GameBackgroundMusicLevel2
   <PauseBackgroundMusic>k__BackingField:
     Guid:
       Data1: 1300193124
@@ -1915,21 +1908,14 @@ MonoBehaviour:
       Data3: 2027350415
       Data4: 535051429
     Path: event:/BackgroundMusic/PauseMusic
-  <PickUpGem>k__BackingField:
+  <PickUpArmor>k__BackingField:
     Guid:
       Data1: -162741971
       Data2: 1129600046
       Data3: 539895465
       Data4: 688881370
     Path: event:/Game/PickUpGem
-  <PickUpBottle>k__BackingField:
-    Guid:
-      Data1: 474671947
-      Data2: 1110126374
-      Data3: 253917110
-      Data4: -1737923310
-    Path: event:/Game/PickUpBottle
-  <DamageFlyBat>k__BackingField:
+  <EnemyDamage>k__BackingField:
     Guid:
       Data1: 303496185
       Data2: 1156936136

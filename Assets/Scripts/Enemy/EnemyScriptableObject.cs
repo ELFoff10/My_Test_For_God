@@ -5,25 +5,19 @@ public class EnemyScriptableObject : ScriptableObject
 {
 	[SerializeField]
 	private float _moveSpeed;
-	public float MoveSpeed
-	{
-		get => _moveSpeed;
-		private set => _moveSpeed = value;
-	}
+	public float MoveSpeed => _moveSpeed;
 
 	[SerializeField]
 	private float _maxHealth;
-	public float MaxHealth
-	{
-		get => _maxHealth;
-		private set => _maxHealth = value;
-	}
+	public float MaxHealth => _maxHealth;
 
 	[SerializeField]
 	private float _damage;
-	public float Damage
-	{
-		get => _damage;
-		private set => _damage = value;
-	}
+	public float Damage => _damage;
+	
+	[SerializeField]
+	private int _experienceGranted;
+	public int ExperienceGranted => _experienceGranted;
+	
+	
 }

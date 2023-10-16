@@ -1,7 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-
 public class SelectionControl : MonoBehaviour
 {
     [SerializeField] private Selectable _startSelection;

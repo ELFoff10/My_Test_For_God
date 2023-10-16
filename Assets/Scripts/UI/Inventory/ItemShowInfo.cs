@@ -3,7 +3,8 @@ using UnityEngine;
 
 public class ItemShowInfo : MonoBehaviour
 {
-    [SerializeField] private TMP_Text _itemName, _itemDescription;
+    [SerializeField] 
+    private TMP_Text _itemName, _itemDescription;
     private void Awake()
     {
         ItemGUI.OnItemSelected += (InventoryItem ii) =>

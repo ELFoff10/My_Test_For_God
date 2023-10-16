@@ -6,13 +6,10 @@ using Random = UnityEngine.Random;
 
 public class DropRateManager : MonoBehaviour
 {
-    public bool IsBoss = false;
-    
     [Serializable]
     public class Drops
     {
-        public string Name;
-        public GameObject ItemPrefab;
+        public PickupArmor ItemPrefab;
         public float DropRate;
     }
 
@@ -22,12 +19,6 @@ public class DropRateManager : MonoBehaviour
     {
         if (!gameObject.scene.isLoaded)
         {
-            return;
-        }
-
-        if (IsBoss)
-        {
-            GameManager.Instance.CurrentState = GameManager.GameState.Victory;
             return;
         }
         

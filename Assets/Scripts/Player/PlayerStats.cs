@@ -105,9 +105,14 @@ public class PlayerStats : MonoBehaviour
 	public Image ExperienceBar;
 	public TMP_Text LevelText;
 
-
 	private void Awake()
 	{
+		if (CharacterSelector.Instance != null)
+		{
+			CharacterData = CharacterSelector.Instance.GetData();
+			CharacterSelector.Instance.DestroyCharacterSelector();
+		}
+
 		_inventory = GetComponent<InventoryManager>();
 
 		CurrentHealth = CharacterData.MaxHealth;
@@ -209,7 +214,7 @@ public class PlayerStats : MonoBehaviour
 			return;
 		GameManager.Instance.AssignLevelReachedUI(Level);
 		GameManager.Instance.AssignChosenWeaponsAndPassiveItemsUI(_inventory.WeaponUiSlots,
-			_inventory.PassiveItemUiSlots);
+			_inventory.ArmorItemUiSlots);
 		GameManager.Instance.GameOver();
 	}
 
@@ -262,16 +267,16 @@ public class PlayerStats : MonoBehaviour
 		WeaponIndex++;
 	}
 
-	public void SpawnPassiveItem(GameObject passiveItem)
+	public void SpawnArmorItem(GameObject passiveItem)
 	{
-		if (PassiveItemIndex >= _inventory.PassiveItemSlots.Count - 1)
+		if (PassiveItemIndex >= _inventory.ArmorItemSlots.Count - 1)
 		{
 			return;
 		}
 
 		var spawnPassiveItem = Instantiate(passiveItem, transform.position, Quaternion.identity);
 		spawnPassiveItem.transform.SetParent(transform);
-		_inventory.AddPassiveItem(PassiveItemIndex, spawnPassiveItem.GetComponent<ArmorItem>());
+		_inventory.AddArmorItem(PassiveItemIndex, spawnPassiveItem.GetComponent<ArmorItem>());
 		PassiveItemIndex++;
 	}
 }

@@ -6,8 +6,10 @@ using System;
 public class ItemGUI : MonoBehaviour, ISelectHandler
 {
     public static event Action<InventoryItem> OnItemSelected;
-    [SerializeField] private InventoryItem _item;
-    [SerializeField] private Image _targetImage;
+    [SerializeField] 
+    private InventoryItem _item;
+    [SerializeField]
+    private Image _targetImage;
 
     public void OnSelect(BaseEventData eventData)
     {

@@ -89,8 +89,6 @@ public class GameManager : MonoSingleton<GameManager>
 					AudioManager.Instance.EventInstances[(int)AudioNameEnum.Victory].start();
 					AudioManager.Instance.EventInstances[(int)AudioNameEnum.GameBackgroundMusic]
 						.stop(STOP_MODE.ALLOWFADEOUT);
-					AudioManager.Instance.EventInstances[(int)AudioNameEnum.GameBackgroundMusicLevel2]
-						.stop(STOP_MODE.ALLOWFADEOUT);
 					IsGameOver = true;
 					Time.timeScale = 0f;
 					VictoryScreen.gameObject.SetActive(true);

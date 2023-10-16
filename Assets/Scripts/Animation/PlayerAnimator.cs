@@ -6,9 +6,6 @@ public class PlayerAnimator : MonoBehaviour
 	private PlayerMovement _playerMovement;
 	private SpriteRenderer _spriteRenderer;
 	private static readonly int MoveSide = Animator.StringToHash("MoveSide");
-	// private static readonly int MoveUp = Animator.StringToHash("MoveUp");
-	// private static readonly int MoveDown = Animator.StringToHash("MoveDown");
-	// private static readonly int Idle = Animator.StringToHash("Idle");
 
 	private void Start()
 	{

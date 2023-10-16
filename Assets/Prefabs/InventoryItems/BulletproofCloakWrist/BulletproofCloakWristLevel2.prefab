@@ -44,4 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 245d3937ad1944918f5321fb43baa115, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  InventoryItemData: {fileID: 11400000, guid: 01fb94006dc77ba4d8409ec8606ad9db, type: 2}
+  ArmorItemData: {fileID: 11400000, guid: 01fb94006dc77ba4d8409ec8606ad9db, type: 2}

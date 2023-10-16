@@ -17,7 +17,7 @@ MonoBehaviour:
   _maxCartridges: 50
   _damage: 5
   _speed: 20
-  _cooldownDuration: 0
+  _cooldownDuration: 0.1
   _pierce: 0
   _level: 1
   _nextLevelPrefab: {fileID: 7216345248615862913, guid: 97c5093d6b5131c4d8b3d4badb845904, type: 3}

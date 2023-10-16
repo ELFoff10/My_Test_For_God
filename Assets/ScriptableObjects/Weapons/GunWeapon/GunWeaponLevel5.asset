@@ -12,14 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89538c2d3c4134896db4d75616b5fa, type: 3}
   m_Name: GunWeaponLevel5
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 4904390151531246391, guid: 94426994526a46f4f91d9e1e646b686c, type: 3}
-  _prefabGun: {fileID: 5533522818084426157, guid: 1ee6085d9138c12429b564149286af7d, type: 3}
+  _prefab: {fileID: -5449094481807471126, guid: 94426994526a46f4f91d9e1e646b686c, type: 3}
+  _prefabGun: {fileID: 8166839722498889680, guid: 1ee6085d9138c12429b564149286af7d, type: 3}
+  _maxCartridges: 50
   _damage: 25
   _speed: 40
-  _cooldownDuration: 0.1
+  _cooldownDuration: 0
   _pierce: 4
   _level: 5
-  _nextLevelPrefab: {fileID: 7216345248615862975, guid: 7355f60d3e98ee643bd47e6c16305a9e, type: 3}
+  _nextLevelPrefab: {fileID: 7216345248615862913, guid: 7355f60d3e98ee643bd47e6c16305a9e, type: 3}
   _name: Bow Level 5
   _description: Damage + 5, Speed + 5, Pierce +1, Cooldown -0.1
   _icon: {fileID: 21300000, guid: 1b4696d341b6ec443b4e499361de0675, type: 3}

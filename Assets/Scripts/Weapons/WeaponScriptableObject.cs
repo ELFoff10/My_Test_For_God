@@ -4,12 +4,16 @@ using UnityEngine;
 public class WeaponScriptableObject : ScriptableObject
 {
 	[SerializeField]
-	private GameObject _prefab;
-	public GameObject Prefab => _prefab;
+	private ProjectileBehaviour _prefab;
+	public ProjectileBehaviour Prefab => _prefab;
 	
 	[SerializeField]
-	private GameObject _prefabGun;
-	public GameObject PrefabGun => _prefabGun;
+	private ProjectileBehaviour _prefabGun;
+	public ProjectileBehaviour PrefabGun => _prefabGun;
+	
+	[SerializeField]
+	private int _maxCartridges;
+	public int MaxCartridges => _maxCartridges;
 	
 	[SerializeField]
 	private float _damage;
@@ -32,8 +36,8 @@ public class WeaponScriptableObject : ScriptableObject
 	public int Level => _level;
 	
 	[SerializeField]
-	private GameObject _nextLevelPrefab;
-	public GameObject NextLevelPrefab => _nextLevelPrefab;
+	private ProjectileController _nextLevelPrefab;
+	public ProjectileController NextLevelPrefab => _nextLevelPrefab;
 	
 	[SerializeField]
 	private string _name;

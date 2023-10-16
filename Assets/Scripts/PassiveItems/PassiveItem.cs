@@ -1,9 +1,9 @@
 using UnityEngine;
 
-public class ArmorItem : MonoBehaviour
+public class PassiveItem : MonoBehaviour
 {
 	protected PlayerStats PlayerStats;
-	public ArmorItemScriptableObject ArmorItemData;
+	public PassiveItemScriptableObject PassiveItemData;
 
 	protected virtual void ApplyModifier()
 	{

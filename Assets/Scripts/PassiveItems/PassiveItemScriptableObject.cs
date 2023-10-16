@@ -1,7 +1,7 @@
 using UnityEngine;
 
 [CreateAssetMenu(fileName = "ArmorItemScriptableObject", menuName = "ScriptableObject/Armor Item")]
-public class ArmorItemScriptableObject : ScriptableObject
+public class PassiveItemScriptableObject : ScriptableObject
 {
 	[SerializeField]
 	private float _multiplier;

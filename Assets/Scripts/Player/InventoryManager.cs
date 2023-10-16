@@ -10,9 +10,9 @@ public class InventoryManager : MonoBehaviour
 	public List<WeaponController> WeaponSlots = new List<WeaponController>(6);
 	public int[] WeaponLevels = new int[6];
 	public List<Image> WeaponUiSlots = new List<Image>(6);
-	public List<ArmorItem> ArmorItemSlots = new List<ArmorItem>(6);
-	public int[] ArmorItemLevels = new int[6];
-	public List<Image> ArmorItemUiSlots = new List<Image>(6);
+	public List<PassiveItem> PassiveItemSlots = new List<PassiveItem>(6);
+	public int[] PassiveItemLevels = new int[6];
+	public List<Image> PassiveItemUiSlots = new List<Image>(6);
 
 	[Serializable]
 	public class WeaponUpgrade
@@ -23,11 +23,11 @@ public class InventoryManager : MonoBehaviour
 	}
 
 	[Serializable]
-	public class ArmorItemUpgrade
+	public class PassiveItemUpgrade
 	{
-		public int ArmorItemUpgradeIndex;
-		public GameObject InitialArmorItem;
-		public ArmorItemScriptableObject ArmorItemData;
+		public int PassiveItemUpgradeIndex;
+		public GameObject InitialPassiveItem;
+		public PassiveItemScriptableObject PassiveItemData;
 	}
 
 	[Serializable]
@@ -40,7 +40,7 @@ public class InventoryManager : MonoBehaviour
 	}
 
 	public List<WeaponUpgrade> WeaponUpgradeOptions = new List<WeaponUpgrade>();
-	public List<ArmorItemUpgrade> ArmorItemUpgradeOptions = new List<ArmorItemUpgrade>();
+	public List<PassiveItemUpgrade> PassiveItemUpgradeOptions = new List<PassiveItemUpgrade>();
 	public List<UpgradeUI> UpgradeUIOptions = new List<UpgradeUI>();
 
 	private PlayerStats _player;
@@ -63,12 +63,12 @@ public class InventoryManager : MonoBehaviour
 		}
 	}
 
-	public void AddArmorItem(int slotIndex, ArmorItem armorItem)
+	public void AddPassiveItem(int slotIndex, PassiveItem passiveItem)
 	{
-		ArmorItemSlots[slotIndex] = armorItem;
-		ArmorItemLevels[slotIndex] = armorItem.ArmorItemData.Level;
-		ArmorItemUiSlots[slotIndex].enabled = true;
-		ArmorItemUiSlots[slotIndex].sprite = armorItem.ArmorItemData.Icon;
+		PassiveItemSlots[slotIndex] = passiveItem;
+		PassiveItemLevels[slotIndex] = passiveItem.PassiveItemData.Level;
+		PassiveItemUiSlots[slotIndex].enabled = true;
+		PassiveItemUiSlots[slotIndex].sprite = passiveItem.PassiveItemData.Icon;
 
 		if (GameManager.Instance != null && GameManager.Instance.ChoosingUpgrade)
 		{
@@ -101,25 +101,25 @@ public class InventoryManager : MonoBehaviour
 		}
 	}
 
-	private void LevelUpArmorItem(int slotIndex, int upgradeIndex)
+	private void LevelUpPassiveItem(int slotIndex, int upgradeIndex)
 	{
-		if (ArmorItemSlots.Count > slotIndex)
+		if (PassiveItemSlots.Count > slotIndex)
 		{
-			var armorItemSlot = ArmorItemSlots[slotIndex];
-			if (!armorItemSlot.ArmorItemData.NextLevelPrefab)
+			var passiveItem = PassiveItemSlots[slotIndex];
+			if (!passiveItem.PassiveItemData.NextLevelPrefab)
 			{
 				return;
 			}
 
-			var upgradeArmorItem = Instantiate(armorItemSlot.ArmorItemData.NextLevelPrefab, transform.position,
+			var upgradePassiveItem = Instantiate(passiveItem.PassiveItemData.NextLevelPrefab, transform.position,
 				Quaternion.identity);
-			upgradeArmorItem.transform.SetParent(transform);
-			AddArmorItem(slotIndex, upgradeArmorItem.GetComponent<ArmorItem>());
-			Destroy(armorItemSlot.gameObject);
-			ArmorItemLevels[slotIndex] = upgradeArmorItem.GetComponent<ArmorItem>().ArmorItemData.Level;
+			upgradePassiveItem.transform.SetParent(transform);
+			AddPassiveItem(slotIndex, upgradePassiveItem.GetComponent<PassiveItem>());
+			Destroy(passiveItem.gameObject);
+			PassiveItemLevels[slotIndex] = upgradePassiveItem.GetComponent<PassiveItem>().PassiveItemData.Level;
 
-			ArmorItemUpgradeOptions[upgradeIndex].ArmorItemData =
-				upgradeArmorItem.GetComponent<ArmorItem>().ArmorItemData;
+			PassiveItemUpgradeOptions[upgradeIndex].PassiveItemData =
+				upgradePassiveItem.GetComponent<PassiveItem>().PassiveItemData;
 
 			if (GameManager.Instance != null && GameManager.Instance.ChoosingUpgrade)
 			{
@@ -131,11 +131,11 @@ public class InventoryManager : MonoBehaviour
 	private void ApplyUpgradeOptions()
 	{
 		List<WeaponUpgrade> availableWeaponUpgrades = new List<WeaponUpgrade>(WeaponUpgradeOptions);
-		List<ArmorItemUpgrade> availableArmorItemUpgrades = new List<ArmorItemUpgrade>(ArmorItemUpgradeOptions);
+		List<PassiveItemUpgrade> availablePassiveItemUpgrades = new List<PassiveItemUpgrade>(PassiveItemUpgradeOptions);
 
 		foreach (var upgradeOption in UpgradeUIOptions)
 		{
-			if (availableWeaponUpgrades.Count == 0 && availableArmorItemUpgrades.Count == 0)
+			if (availableWeaponUpgrades.Count == 0 && availablePassiveItemUpgrades.Count == 0)
 			{
 				return;
 			}
@@ -146,7 +146,7 @@ public class InventoryManager : MonoBehaviour
 			{
 				upgradeType = 2;
 			}
-			else if (availableArmorItemUpgrades.Count == 0)
+			else if (availablePassiveItemUpgrades.Count == 0)
 			{
 				upgradeType = 1;
 			}
@@ -210,26 +210,26 @@ public class InventoryManager : MonoBehaviour
 			}
 			else if (upgradeType == 2)
 			{
-				ArmorItemUpgrade chosenArmorItemUpgrade =
-					availableArmorItemUpgrades[Random.Range(0, availableArmorItemUpgrades.Count)];
+				PassiveItemUpgrade chosenPassiveItemUpgrade =
+					availablePassiveItemUpgrades[Random.Range(0, availablePassiveItemUpgrades.Count)];
 
-				availableArmorItemUpgrades.Remove(chosenArmorItemUpgrade);
+				availablePassiveItemUpgrades.Remove(chosenPassiveItemUpgrade);
 
-				if (chosenArmorItemUpgrade != null)
+				if (chosenPassiveItemUpgrade != null)
 				{
 					EnableUpgradeUI(upgradeOption);
 
-					bool newArmorItem = false;
-					for (int i = 0; i < ArmorItemSlots.Count; i++)
+					bool newPassiveItem = false;
+					for (int i = 0; i < PassiveItemSlots.Count; i++)
 					{
-						if (ArmorItemSlots[i] != null && ArmorItemSlots[i].ArmorItemData ==
-						    chosenArmorItemUpgrade.ArmorItemData)
+						if (PassiveItemSlots[i] != null && PassiveItemSlots[i].PassiveItemData ==
+						    chosenPassiveItemUpgrade.PassiveItemData)
 						{
-							newArmorItem = false;
+							newPassiveItem = false;
 
-							if (!newArmorItem)
+							if (!newPassiveItem)
 							{
-								if (!chosenArmorItemUpgrade.ArmorItemData.NextLevelPrefab)
+								if (!chosenPassiveItemUpgrade.PassiveItemData.NextLevelPrefab)
 								{
 									DisableUpgradeUI(upgradeOption);
 
@@ -237,34 +237,34 @@ public class InventoryManager : MonoBehaviour
 								}
 
 								upgradeOption.UpgradeButton.onClick.AddListener(() =>
-									LevelUpArmorItem(i, chosenArmorItemUpgrade.ArmorItemUpgradeIndex));
+									LevelUpPassiveItem(i, chosenPassiveItemUpgrade.PassiveItemUpgradeIndex));
 
-								upgradeOption.UpgradeDescriptionDisplay.text = chosenArmorItemUpgrade.ArmorItemData
-									.NextLevelPrefab.GetComponent<ArmorItem>().ArmorItemData.Description;
-								upgradeOption.UpgradeNameDisplay.text = chosenArmorItemUpgrade.ArmorItemData
+								upgradeOption.UpgradeDescriptionDisplay.text = chosenPassiveItemUpgrade.PassiveItemData
+									.NextLevelPrefab.GetComponent<PassiveItem>().PassiveItemData.Description;
+								upgradeOption.UpgradeNameDisplay.text = chosenPassiveItemUpgrade.PassiveItemData
 									.NextLevelPrefab
-									.GetComponent<ArmorItem>().ArmorItemData.Name;
+									.GetComponent<PassiveItem>().PassiveItemData.Name;
 							}
 
 							break;
 						}
 						else
 						{
-							newArmorItem = true;
+							newPassiveItem = true;
 						}
 					}
 
-					if (newArmorItem)
+					if (newPassiveItem)
 					{
 						upgradeOption.UpgradeButton.onClick.AddListener(() =>
-							_player.SpawnArmorItem(chosenArmorItemUpgrade.InitialArmorItem));
+							_player.SpawnPassiveItem(chosenPassiveItemUpgrade.InitialPassiveItem));
 
 						upgradeOption.UpgradeDescriptionDisplay.text =
-							chosenArmorItemUpgrade.ArmorItemData.Description;
-						upgradeOption.UpgradeNameDisplay.text = chosenArmorItemUpgrade.ArmorItemData.Name;
+							chosenPassiveItemUpgrade.PassiveItemData.Description;
+						upgradeOption.UpgradeNameDisplay.text = chosenPassiveItemUpgrade.PassiveItemData.Name;
 					}
 
-					upgradeOption.UpgradeIcon.sprite = chosenArmorItemUpgrade.ArmorItemData.Icon;
+					upgradeOption.UpgradeIcon.sprite = chosenPassiveItemUpgrade.PassiveItemData.Icon;
 				}
 			}
 		}

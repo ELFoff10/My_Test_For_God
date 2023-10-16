@@ -12,11 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c89538c2d3c4134896db4d75616b5fa, type: 3}
   m_Name: RifleWeaponLevel6
   m_EditorClassIdentifier: 
-  _prefab: {fileID: 4904390151531246391, guid: dbacb4a4deab04f40aaa302be05bcff0, type: 3}
-  _prefabGun: {fileID: 841010465041214724, guid: 438a1a0305a13de42950779ca54970f1, type: 3}
+  _prefab: {fileID: -5449094481807471126, guid: dbacb4a4deab04f40aaa302be05bcff0, type: 3}
+  _prefabGun: {fileID: -7459415018073994141, guid: 438a1a0305a13de42950779ca54970f1, type: 3}
+  _maxCartridges: 50
   _damage: 60
   _speed: 80
-  _cooldownDuration: 0.5
+  _cooldownDuration: 0
   _pierce: 6
   _level: 6
   _nextLevelPrefab: {fileID: 0}

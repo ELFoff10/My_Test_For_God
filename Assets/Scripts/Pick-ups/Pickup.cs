@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Pickup : MonoBehaviour, ICollectible
 {
-	protected bool HasBeenCollected = false;
+	protected bool HasBeenCollected;
 
 	private void OnTriggerEnter2D(Collider2D other)
 	{

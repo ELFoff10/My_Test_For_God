@@ -5,6 +5,7 @@ public class PlayerAnimator : MonoBehaviour
 {
 	[SerializeField]
 	private List<SpriteRenderer> _spriteRenderer;
+	
 	private Animator _animator;
 	private PlayerMovement _playerMovement;
 	private static readonly int MoveSide = Animator.StringToHash("MoveSide");

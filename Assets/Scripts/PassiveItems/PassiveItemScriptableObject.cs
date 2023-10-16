@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "ArmorItemScriptableObject", menuName = "ScriptableObject/Armor Item")]
+[CreateAssetMenu(fileName = "PassiveItemScriptableObject", menuName = "ScriptableObject/Passive Item")]
 public class PassiveItemScriptableObject : ScriptableObject
 {
 	[SerializeField]

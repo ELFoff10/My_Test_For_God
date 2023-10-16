@@ -24,7 +24,7 @@ public class AudioManager : MonoSingleton<AudioManager>
 		
 	}
 
-	public void PlayOneShot(EventReference sound)
+	private void PlayOneShot(EventReference sound)
 	{
 		RuntimeManager.PlayOneShot(sound);
 	}

@@ -2,8 +2,8 @@ using UnityEngine;
 
 public class PassiveItem : MonoBehaviour
 {
-	protected PlayerStats PlayerStats;
 	public PassiveItemScriptableObject PassiveItemData;
+	protected PlayerStats PlayerStats;
 
 	protected virtual void ApplyModifier()
 	{

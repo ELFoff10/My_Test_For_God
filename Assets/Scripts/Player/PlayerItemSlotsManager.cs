@@ -5,7 +5,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using Random = UnityEngine.Random;
 
-public class InventoryManager : MonoBehaviour
+public class PlayerItemSlotsManager : MonoBehaviour
 {
 	public List<WeaponController> WeaponSlots = new List<WeaponController>(6);
 	public int[] WeaponLevels = new int[6];

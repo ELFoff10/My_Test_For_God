@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f007dc71cfe8154c911d8bcf8421665, type: 3}
   m_Name: MilitaryHelmet
   m_EditorClassIdentifier: 
-  _name: MilitaryHelmet
-  _description: Military Helmet Bla Bla
+  _name: "\u0412\u043E\u0435\u043D\u043D\u044B\u0439 \u0448\u043B\u0435\u043C"
+  _description: "\u041C\u0435\u0442\u0430\u043B\u043B\u0438\u0447\u0435\u0441\u043A\u0438\u0439
+    \u0437\u0430\u0449\u0438\u0442\u043D\u044B\u0439 \u0448\u043B\u0435\u043C \u0434\u043B\u044F
+    \u0437\u0430\u0449\u0438\u0442\u044B \u0433\u043E\u043B\u043E\u0432\u044B \u0432\u043E\u0435\u043D\u043D\u043E\u0441\u043B\u0443\u0436\u0430\u0449\u0438\u0445."
   _itemSprite: {fileID: 21300000, guid: 1aa8d4e1c6a8e934595f9ab61f2bf8aa, type: 3}

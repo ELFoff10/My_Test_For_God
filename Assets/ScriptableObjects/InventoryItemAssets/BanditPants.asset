@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f007dc71cfe8154c911d8bcf8421665, type: 3}
   m_Name: BanditPants
   m_EditorClassIdentifier: 
-  _name: BanditPants
-  _description: Bandit Pants Bla Bla
+  _name: "\u0411\u0430\u043D\u0434\u0438\u0442\u0441\u043A\u0438\u0435 \u0448\u0442\u0430\u043D\u044B"
+  _description: "\u042D\u0442\u0430 \u043C\u043E\u0434\u0430 \u043F\u0440\u0438\u0448\u043B\u0430
+    \u0438\u0437 \u043C\u0443\u0436\u0441\u043A\u0438\u0445 \u0442\u044E\u0440\u0435\u043C."
   _itemSprite: {fileID: 21300000, guid: 25c2a3f0b6bbd5e438f53bf9aa8b4c74, type: 3}

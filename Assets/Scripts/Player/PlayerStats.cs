@@ -96,7 +96,7 @@ public class PlayerStats : MonoBehaviour
 	private float _invincibilityTimer;
 	private bool _isInvincible;
 
-	private InventoryManager _inventory;
+	private PlayerItemSlotsManager _playerItemSlots;
 	public int WeaponIndex;
 	public int PassiveItemIndex;
 
@@ -113,7 +113,7 @@ public class PlayerStats : MonoBehaviour
 			CharacterSelector.Instance.DestroyCharacterSelector();
 		}
 
-		_inventory = GetComponent<InventoryManager>();
+		_playerItemSlots = GetComponent<PlayerItemSlotsManager>();
 
 		CurrentHealth = CharacterData.MaxHealth;
 		CurrentRegenHp = CharacterData.Recovery;
@@ -213,8 +213,8 @@ public class PlayerStats : MonoBehaviour
 		if (GameManager.Instance.IsGameOver)
 			return;
 		GameManager.Instance.AssignLevelReachedUI(Level);
-		GameManager.Instance.AssignChosenWeaponsAndPassiveItemsUI(_inventory.WeaponUiSlots,
-			_inventory.PassiveItemUiSlots);
+		GameManager.Instance.AssignChosenWeaponsAndPassiveItemsUI(_playerItemSlots.WeaponUiSlots,
+			_playerItemSlots.PassiveItemUiSlots);
 		GameManager.Instance.GameOver();
 	}
 
@@ -256,27 +256,27 @@ public class PlayerStats : MonoBehaviour
 
 	public void SpawnWeapon(GameObject weapon)
 	{
-		if (WeaponIndex >= _inventory.WeaponSlots.Count - 1)
+		if (WeaponIndex >= _playerItemSlots.WeaponSlots.Count - 1)
 		{
 			return;
 		}
 
 		var spawnedWeapon = Instantiate(weapon, transform.position, Quaternion.identity);
 		spawnedWeapon.transform.SetParent(transform);
-		_inventory.AddWeapon(WeaponIndex, spawnedWeapon.GetComponent<WeaponController>());
+		_playerItemSlots.AddWeapon(WeaponIndex, spawnedWeapon.GetComponent<WeaponController>());
 		WeaponIndex++;
 	}
 
 	public void SpawnPassiveItem(GameObject passiveItem)
 	{
-		if (PassiveItemIndex >= _inventory.PassiveItemSlots.Count - 1)
+		if (PassiveItemIndex >= _playerItemSlots.PassiveItemSlots.Count - 1)
 		{
 			return;
 		}
 
 		var spawnPassiveItem = Instantiate(passiveItem, transform.position, Quaternion.identity);
 		spawnPassiveItem.transform.SetParent(transform);
-		_inventory.AddPassiveItem(PassiveItemIndex, spawnPassiveItem.GetComponent<PassiveItem>());
+		_playerItemSlots.AddPassiveItem(PassiveItemIndex, spawnPassiveItem.GetComponent<PassiveItem>());
 		PassiveItemIndex++;
 	}
 }

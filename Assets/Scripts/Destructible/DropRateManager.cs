@@ -9,7 +9,7 @@ public class DropRateManager : MonoBehaviour
     [Serializable]
     public class Drops
     {
-        public PickupArmor ItemPrefab;
+        public GameObject ItemPrefab;
         public float DropRate;
     }
 

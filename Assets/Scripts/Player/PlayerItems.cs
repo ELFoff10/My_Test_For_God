@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PlayerItems : MonoBehaviour
 {
-	public bool[] HasItems = new bool[] { false, false, false, false, false};
+	public bool[] HasItems = new bool[] { false, false, false, false, false, false};
 
 	private int _currentItem;
 	

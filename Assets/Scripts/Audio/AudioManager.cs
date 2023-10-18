@@ -18,9 +18,6 @@ public class AudioManager : MonoSingleton<AudioManager>
 		CreateInstance(_fmodEvents.MenuBackgroundMusic);
 		CreateInstance(_fmodEvents.GameBackgroundMusic);
 		CreateInstance(_fmodEvents.PauseBackgroundMusic);	
-		CreateInstance(_fmodEvents.PickUpArmor);
-		CreateInstance(_fmodEvents.EnemyDamage);
-		CreateInstance(_fmodEvents.Victory);
 		
 	}
 

@@ -1,15 +1,17 @@
 ﻿using UnityEngine;
 
-
 [CreateAssetMenu]
 public class InventoryItem : ScriptableObject
 {
-    [SerializeField] private string m_name = "UnnamedItem";
-    public string Name { get => m_name; }
-    
-    [SerializeField] private string m_description = "Nondescript";
-    public string Description { get => m_description; }
+    [SerializeField] 
+    private string _name = "UnnamedItem";
+    public string Name => _name;
 
-    [SerializeField] private Sprite m_itemSprite;
-    public Sprite ItemSprite { get => m_itemSprite; }
+    [SerializeField] 
+    private string _description = "Nondescript";
+    public string Description => _description;
+
+    [SerializeField] 
+    private Sprite _itemSprite;
+    public Sprite ItemSprite => _itemSprite;
 }

@@ -1,16 +1,17 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-
+﻿using TMPro;
+using UnityEngine;
 
 public class ItemShowInfo : MonoBehaviour
 {
-    [SerializeField] private Text itemName, itemDescription;
+    [SerializeField] 
+    private TMP_Text _itemName, _itemDescription;
+    
     private void Awake()
     {
         ItemGUI.OnItemSelected += (InventoryItem ii) =>
         {
-            itemName.text = ii.Name;
-            itemDescription.text = ii.Description;
+            _itemName.text = ii.Name;
+            _itemDescription.text = ii.Description;
         };
     }
 }

@@ -1,26 +1,18 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-
 public class UseItem : MonoBehaviour
 {
-    private InventoryItem m_Item;
-    [SerializeField] private Image itemImage;
-    public void SetItem(InventoryItem item)
-    {
-        m_Item = item;
-        itemImage.sprite = item.ItemSprite;
-    }
-    void Awake()
-    {
-        ItemGUI.OnItemSelected += SetItem;
-    }
+	[SerializeField]
+	private Image _itemImage;
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            print($"{m_Item.Name} is used");
-        }
-    }
+	private void SetItem(InventoryItem item)
+	{
+		_itemImage.sprite = item.ItemSprite;
+	}
+
+	private void Awake()
+	{
+		ItemGUI.OnItemSelected += SetItem;
+	}
 }

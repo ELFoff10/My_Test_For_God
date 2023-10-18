@@ -17,9 +17,7 @@ public class Inventory : MonoBehaviour
     {
         for (var i = 0; i < _slots.Count; i++)
         {
-            var active = _playerItems.HasItems[i];
-
-            _slots[i].UpdateSlot(active);
+            _slots[i].UpdateSlot(_playerItems.HasItems[i]);
         }
     }
 }

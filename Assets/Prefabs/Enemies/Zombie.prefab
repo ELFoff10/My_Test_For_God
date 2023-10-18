@@ -709,7 +709,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: edc272c6fe76962498309503a6967c68, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ListDrops: []
+  ListDrops:
+  - ItemPrefab: {fileID: 6035695804877151443, guid: c8c9c448cba421145b1d942efe46e76b, type: 3}
+    DropRate: 100
 --- !u!60 &5631251587721028527
 PolygonCollider2D:
   m_ObjectHideFlags: 0

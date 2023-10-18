@@ -4,6 +4,7 @@ public class ChunkTrigger : MonoBehaviour
 {
 	[SerializeField]
 	private PropRandomizer _targetMap;
+	
 	private MapController _mapController;
 
 	private void Start()

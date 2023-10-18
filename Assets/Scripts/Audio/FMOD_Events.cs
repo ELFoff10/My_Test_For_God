@@ -14,12 +14,4 @@ public class FMOD_Events : MonoBehaviour
 	public EventReference GameBackgroundMusic { get; private set; }	
 	[field: SerializeField]
 	public EventReference PauseBackgroundMusic { get; private set; }
-	
-	[field: Header("Game")]
-	[field: SerializeField]
-	public EventReference PickUpArmor { get; private set; }	
-    [field: SerializeField]
-	public EventReference EnemyDamage { get; private set; }	 
-	[field: SerializeField]
-	public EventReference Victory { get; private set; }	
 }
